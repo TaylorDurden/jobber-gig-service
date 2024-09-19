@@ -1,15 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { gigCreateSchema } from '@gig/schemes/gig';
-import { BadRequestError } from '@taylordurden/jobber-shared';
 import { Request, Response } from 'express';
-import { gigCreate } from '@gig/controllers/create';
+import { BadRequestError } from '@taylordurden/jobber-shared';
 import * as helper from '@taylordurden/jobber-shared';
+import { gigCreateSchema } from '@gig/schemes/gig';
+import { gigCreate } from '@gig/controllers/create';
 import * as gigService from '@gig/services/gig.service';
 import { authUserPayload, gigMockRequest, gigMockResponse, sellerGig } from '@gig/controllers/test/mocks/gig.mock';
 
 jest.mock('@gig/services/gig.service');
-jest.mock('@uzochukwueddie/jobber-shared');
-jest.mock('@uzochukwueddie/jobber-shared');
+jest.mock('@taylordurden/jobber-shared');
 jest.mock('@gig/schemes/gig');
 jest.mock('@gig/elasticsearch');
 jest.mock('@elastic/elasticsearch');

@@ -13,7 +13,7 @@ async function createMQConnection(): Promise<Channel | undefined> {
     closeMQConnection(channel, connection);
     return channel;
   } catch (error) {
-    log.log('error', 'GigService createConnection() method error:', error);
+    log.log('error', 'GigService createMQConnection() method error:', error);
     return undefined;
   }
 }

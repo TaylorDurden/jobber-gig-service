@@ -18,7 +18,7 @@ pipeline {
 
   environment {
     DOCKER_CREDENTIALS = credentials("dockerhub")
-    IMAGE_NAME = "uzochukwueddie" + "/" + "jobber-gig"
+    IMAGE_NAME = "taylordurden" + "/" + "jobber-gig"
     IMAGE_TAG = "stable-${BUILD_NUMBER}"
   }
 
