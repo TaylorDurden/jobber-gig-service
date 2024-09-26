@@ -1,22 +1,24 @@
-FROM node:21-alpine3.18 as builder
+FROM node:21-alpine3.18 AS builder
 
 WORKDIR /app
 COPY package*.json ./
+COPY pnpm-lock.yaml ./
 COPY tsconfig.json ./
 COPY .npmrc ./
 COPY src ./src
-RUN npm install -g npm@latest
-RUN npm ci && npm run build
+RUN npm install -g pnpm
+RUN pnpm install --frozen-lockfile && pnpm run build
 
 FROM node:21-alpine3.18
 
 WORKDIR /app
 RUN apk add --no-cache curl
 COPY package*.json ./
+COPY pnpm-lock.yaml ./
 COPY tsconfig.json ./
 COPY .npmrc ./
-RUN npm install -g pm2 npm@latest
-RUN npm ci --production
+RUN npm install -g pm2 pnpm
+RUN pnpm install --frozen-lockfile --prod
 COPY --from=builder /app/build ./build
 
 EXPOSE 4004
